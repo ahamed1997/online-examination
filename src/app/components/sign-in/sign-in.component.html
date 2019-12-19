@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col s10 offset-s12">
+            <div class="card">
+                <div *ngIf="isLogInError" class="red-text center error-message" style="color: red;">
+                    <i class="material-icons">
+                        error
+                    </i>
+                    Incorrect username or password
+                </div>
+                <form [formGroup]="angForm" (ngSubmit)="login()">
+                    
+                    <div>
+                        <label class="form-control">Username</label>
+                        <input class="form-control" 
+                        type="text"
+                        placeholder="Enter the Username" 
+                 
+                        formControlName="username" required />
+                         <span *ngIf="username.errors && username.touched" class="alert alert-danger">
+                                <span *ngIf="username.errors.required">*</span>
+                                
+                               </span> 
+                           </div>
+
+             <div>
+                <label class="form-control">Password</label>
+                <input class="form-control" 
+                type="password"
+                placeholder="Enter the Password" 
+                
+    
+                formControlName="password"  required/>
+                 <span *ngIf="password.errors && password.touched" class="alert alert-danger">
+                        <span *ngIf="password.errors.required">Password cannot be empty</span>
+                    
+                       </span> 
+                   </div>
+                   <div style="color: red;">
+                    {{errormessage}}
+                   </div>
+                   <button class="btn btn-primary">
+                       Submit
+                   </button>
+</form>
+
+            </div>
+            </div>
+    </div>
+</div>

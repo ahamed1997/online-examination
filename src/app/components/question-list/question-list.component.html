@@ -1,0 +1,42 @@
+<table class="table table-hover">
+    <tr style="background-color:rgb(65, 71, 69)">
+        <th style="color:rgb(177, 177, 177);"> QUESTIONS</th>
+        <th style="color:rgb(179, 179, 179);">TYPE</th>
+        <th style="color:rgb(179, 179, 179);">ANSWER</th>
+        <th colspan="4" style="padding-left: 17%; color:rgb(179, 179, 179);">OPTIONS</th>
+        <th style="color:rgb(179, 179, 179);">MARK</th>
+        <th></th>
+
+    </tr>
+
+          <tr *ngFor="let ques of services.list" (click)="populateForm(ques)">
+            <td width="700%">
+                [{{ques.Sno}}].{{ques.Question}}
+            </td>
+            <td>
+                {{ques.Testmodel}}
+            </td>
+            <td>
+                {{ques.Answers}}
+            </td>
+            <td>
+                {{ques.Option1}} 
+            </td>
+            <td>
+                {{ques.Option2}} 
+            </td>
+            <td>
+                {{ques.Option3}} 
+            </td>
+            <td>
+                {{ques.Option4}} 
+            </td>
+            <td>
+                {{ques.Mark}}
+            </td>
+            <td>
+                <button (click)="onDelete(ques.SNo)" class="btn btn-sm btn-outline-danger">Delete</button>
+            </td>
+        </tr>
+    </table> 
+    

@@ -1,0 +1,20 @@
+.home-design-info figure img, .home-dev-info figure img{
+    width: 230px;
+    height:200px;
+    border-radius:60px;
+}
+
+#principal-content {
+    background: none repeat scroll 0 0 #fff;
+    padding-top: 4%;
+    position: relative;
+    z-index: 980;
+}
+
+#principal-content #develop {
+    margin: 1em 0;
+    text-align: center;
+}  
+#details{
+    padding-top:7%;
+}  

@@ -1,0 +1,236 @@
+<div class="container">
+  <div class="col-md-4">
+  </div>
+  <div class="col-md-4">
+      <br />
+      <br />
+      <div *ngIf="paymentmode!='2'">
+          <div class="card border-primary mb-3" style="max-width: 35rem;">
+              <form [formGroup]="myForm" (ngSubmit)="showDetails()">
+                  <div class="card-header">
+                      <div class="text-center">
+                          <h2>Payment Registeration</h2>
+                      </div>
+                  </div>
+                  <br />
+                  <div class="card-body text-primary">
+                      <label>Name</label><br />
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                          <input class="form-control" type="text" placeholder="Enter the Name" pattern="[aA-zZ]*"
+                              maxlength="30" formControlName="name" />
+                          <div>
+                              <span *ngIf="name.errors && name.touched">
+                                  <span *ngIf="name.errors.required">Name cannot be empty</span>
+                                  <span *ngIf="name.errors.pattern">Name should be correct Format</span>
+                                  <span *ngIf="name.errors.maxlength">Name should be correct Format</span>
+                              </span>
+                          </div>
+                      </div>
+                      <br />
+
+
+                      <label>Email</label><br />
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-envelope  
+                              "></i></span>
+                          <input class="form-control" type="text" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                              placeholder="Enter the Email" formControlName="email" />
+                          <span *ngIf="email.errors && email.touched" >
+                              <span *ngIf="email.errors.required">Email cannot be empty</span>
+                              <span *ngIf="email.errors.pattern">Email should be valid Format</span>
+                          </span>
+                      </div>
+                      <br />
+
+                      <label>Mobile Number</label><br />
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                          <input class="form-control" minlength="10" maxlength="10"
+                              pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]" type="tel"
+                              placeholder="Enter the Mobile Number" formControlName="mobile" />
+                          <span *ngIf="mobile.errors && mobile.touched" >
+                              <span *ngIf="mobile.errors.required">Phone Number cannot be empty</span>
+                              <span *ngIf="mobile.errors.minlength"> Number cannot exceeds 10</span>
+                              <span *ngIf="mobile.errors.maxlength"> Number cannot exceeds 10</span>
+                              <span *ngIf="mobile.errors.pattern"> Number should be correct Format</span>
+                          </span>
+                      </div>
+                      <br />
+
+
+                      <label>Aadhar CardNumber</label><br />
+                      <div class="input-group">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                          <input class="form-control" minlength="16" maxlength="16"
+                              pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+                              type="tel" placeholder="Enter the Aadharcard Number"
+                              formControlName="aadharcardNumber" />
+                          <span *ngIf="aadharcardNumber.errors && aadharcardNumber.touched"
+                              class="alert alert-danger">
+                              <span *ngIf="aadharcardNumber.errors.required">AadharCard Number cannot be empty</span>
+                              <span *ngIf="aadharcardNumber.errors.minlength"> AadharCard Number cannot exceeds
+                                  16</span>
+                              <span *ngIf="aadharcardNumber.errors.maxlength"> AadharCard Number cannot exceeds
+                                  16</span>
+                              <span *ngIf="aadharcardNumber.errors.pattern"> AadharCard Number should be correct
+                                  Format</span>
+                          </span>
+                      </div>
+                      <br />
+
+                      <label>TestModel</label><br />
+                      <div class="input-group">
+                          <select class="form-control" placeholder="Select the TestModel" formControlName="testModel">
+                              <option value="Aptitude">Aptitude</option>
+                              <option value="Technical">Technical</option>
+                          </select>
+                      </div>
+                      <br />
+
+                      <label>select Date</label><br />
+                      <!-- <mat-form-field>
+                        <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1></mat-datepicker>
+                      </mat-form-field>
+
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker3" placeholder="Value binding" [value]="date.value">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3></mat-datepicker>
+                      </mat-form-field> -->
+                     <div class="input-group">
+                          <mat-form-field class="example-full-width" style="color: greenyellow;"></mat-form-field>
+                          <input formControlName="date" matInput [min]="minDate" [max]="maxDate"
+                              [matDatepicker]="picker" placeholder="Choose a date" />
+
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                          <span *ngIf="date.errors && date.touched" class="alert alert-danger"></span>
+
+                          <br />
+                          <br />
+                      </div> 
+                      <br />
+                      <div class="text-center">
+                          <button type="submit" class="btn btn-outline-primary">Take to payment</button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4">
+  </div>
+</div>
+
+<div class="container">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+      <div class="text-left">
+          <button class="btn btn-success" (click)="showDetails1($event)">Back</button>
+      </div>
+      <div class="text-center">
+          <div *ngIf="dummy===1">
+              <button class="btn btn-primary" (click)="clickcredit()">Credit</button>&nbsp;&nbsp;
+              <button class="btn btn-primary" (click)="clickDebit()">Debit</button>
+              <br />
+              <br />
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+
+
+<div class="container">
+  
+  <div class="col-md-4">
+      <div *ngIf="paymentmode===2">
+          <form [formGroup]="paymentForm" (ngSubmit)="creditpayment()">
+              <label>card Holder Name</label>
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input class="form-control" type="text" pattern="[aA-zZ]*" maxlength="20"
+                      placeholder="Enter the CardHolder Name" formControlName="cardHolderName" />
+                  <span *ngIf="cardHolderName.errors && cardHolderName.touched" class="alert alert-danger">
+                      <span *ngIf="cardHolderName.errors.required">cardHolderName cannot be empty</span>
+                      <span *ngIf="cardHolderName.errors.pattern">cardHolderName should be correct</span>
+                      <span *ngIf="cardHolderName.errors.maxlength">cardHolderName should be correct Format</span>
+                  </span>
+              </div>
+              <br/>
+
+              <label>card Number</label>
+              <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                  <input class="form-control" minlength="16" maxlength="16"
+                      pattern="[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+                      type="tel" placeholder="Enter the CardNumber" formControlName="cardnumber" />
+                  <span *ngIf="cardnumber.errors && cardnumber.touched" >
+                      <span *ngIf="cardnumber.errors.required">card Number cannot be empty</span>
+                      <span *ngIf="cardnumber.errors.minlength">card Number cannot exceeds 16 digits</span>
+                      <span *ngIf="cardnumber.errors.maxlength"> card Number cannot exceeds 16 digits</span>
+                      <span *ngIf="cardnumber.errors.pattern"> card Number should be correct Format</span>
+                  </span>
+              </div>
+              <br/>
+              
+              <label>Expiration</label>
+              
+                  <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-date"></i></span>
+                  <input class="form-control" type="text" formControlName="expiration" maxlength="2" placeholder="MM"
+                      pattern="(0[1-9]|1[012])" required />
+
+                  <input class="form-control" type="text" formControlName="expirations" maxlength="2" placeholder="YY"
+                      
+                      required />
+                  <span *ngIf="expiration.errors && expiration.touched" >
+                      <span *ngIf="expiration.errors.required">Expiration cannot be empty</span>
+                      <span *ngIf="expiration.errors.pattern">Expiration should be correct format</span>
+                      <span *ngIf="expirations.errors.required">Expiration cannot be empty</span>
+                      <span *ngIf="expirations.errors.pattern">Expiration should be correct Format</span>
+                  </span>
+              </div>
+              <br/>
+
+              <label>cvv Number</label>
+              <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-credit-card"></i></span>
+                  <input class="form-control" minlength="3" maxlength="3" pattern="[0-9][0-9][0-9]" type="tel"
+                      placeholder="Enter the cvv Number" formControlName="cvv" />
+                  <span *ngIf="cvv.errors && cvv.touched" class="alert alert-danger">
+                      <span *ngIf="cvv.errors.required">cvv Number cannot be empty</span>
+                      <span *ngIf="cvv.errors.minlength">cvv Number cannot exceeds 3 digits</span>
+                      <span *ngIf="cvv.errors.maxlength"> cvv Number cannot exceeds 3 digits</span>
+                      <span *ngIf="cvv.errors.pattern"> cvv Number should be correct Format</span>
+                  </span>
+
+                  <br />
+              </div>
+              <br/>
+
+              <div class="text-center">
+                  <button class="btn btn-primary">Confirm</button>
+              </div>
+          </form>
+      </div>
+  
+
+  </div>
+</div> 
+
+
+
+
+
+
+<div>
+  {{result}}
+</div>
+<div>
+  {{res}}
+</div>
